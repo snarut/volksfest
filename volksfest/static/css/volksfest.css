@@ -1,0 +1,16 @@
+* {
+    font-family: 'Prompt', sans-serif !important
+}
+
+.navbar-brand {                
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100px;        
+    margin-left: 20px;
+    padding: 0px;
+}
+
+.navbar-menu-item {
+    font-size: 15px;
+}

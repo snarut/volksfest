@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/home_page.css' %}" rel="stylesheet">
+{% endblock extra_css %}
+
+{% block content %}
+
+
+{% image page.hero_image width-1400 as heroimg%}
+<div class="w-100" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ heroimg.url}}'), no-repeat center center; background-size:cover; height:600px">
+    <div class="d-flex w-100 h-100 p-3 mx-auto">
+        <div class="text-center position-relative w-100 h-100">
+            <div class="position-absolute top-50 start-50 translate-middle">
+                <h1 class="text-light">{{ page.hero_title }}</h1>
+                <p class="text-light mt-6">{{ page.hero_text }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center align-items-center" style="min-height:20rem;">
+    <div class="col-md-5 p-5">
+        <iframe  width="546" height="410" src="https://www.youtube.com/embed/Ua2QmdOH4M0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-5 p-4">
+        <h3 class="">And lastly, this one.</h3>
+        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+    </div>
+</div>
+
+{% endblock content %}
