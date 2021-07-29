@@ -32,4 +32,10 @@
     </div>
 </div>
 
+{% with featureds=page.featureds.all %}
+<h3>สินค้าแนะนำ</h3>
+{% for product in featureds %}
+<a href="{{ product.url }}">{{ product.title }}</a><br>
+{% endfor %}
+{% endwith %}
 {% endblock content %}

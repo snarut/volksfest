@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-productpage{% endblock %}
+
+{% block extra_css %}
+
+{% endblock extra_css %}
+
+{% block content %}
+
+<h1>{{ page.product_title }}</h1>
+<p>{{ page.product_description }}</p>
+{% image page.product_image width-800 as prodimg %}
+<img src="{{ prodimg.url }}" alt="{{ page.product_title }}">
+
+
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-productslistpage{% endblock %}
+
+{% block extra_css %}
+
+{% endblock extra_css %}
+
+{% block content %}
+
+
+{% image page.hero_image width-1400 as heroimg%}
+<div class="w-100" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ heroimg.url}}'), no-repeat center center; background-size:cover; height:600px">
+    <div class="d-flex w-100 h-100 p-3 mx-auto">
+        <div class="text-center position-relative w-100 h-100">
+            <div class="position-absolute top-50 start-50 translate-middle">
+                <h1 class="text-light">{{ page.hero_title }}</h1>
+                <p class="text-light mt-6">{{ page.hero_text }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% for product in page.get_children %}
+        <h2><a href="{% pageurl product %}">{{ product.title }}</a></h2>
+        
+{% endfor %}
+
+{% endblock content %}
