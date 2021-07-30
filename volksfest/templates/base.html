@@ -32,7 +32,7 @@
         {#{% wagtailuserbar %}#}
 
         {# Navbar #}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-md-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-md-top py-3 shadow">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/"><img style="width:100%" src="{% static 'VolksfestLogo.png' %}" ></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,27 +40,30 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto fw-light ">
+                    {% with this_path=request.get_full_path|slugify %}
                     <li class="nav-item navbar-menu-item mx-1">
-                    <a class="nav-link active" aria-current="page" href="/">หน้าหลัก</a>
+                    <a class="nav-link {% if this_path == '' %}active{% endif %}" aria-current="page" href="/">หน้าหลัก</a>
                     </li>
                     <li class="nav-item navbar-menu-item mx-1">
-                    <a class="nav-link" href="/product">สินค้าของเรา</a>
+                    <a class="nav-link {% if this_path == 'product' %}active{% endif %}"" href="/product">สินค้าของเรา</a>
                     </li>
                     <li class="nav-item navbar-menu-item mx-1">
                     <a class="nav-link" href="#">เกี่ยวกับเรา</a>
                     </li>
                     <li class="nav-item navbar-menu-item mx-1">
-                    <a class="nav-link" href="#" >สั่งเลย!</a>
+                    <a class="nav-link" href="https://line.me/R/ti/p/@volksfestsausage" >สั่งเลย!</a>
                     </li>
+                    {% endwith %}
                 </ul>
                 </div>
             </div>
         </nav>
-
-        <div class="container-fluid">
-        {% block content %}{% endblock %}
-        </div>
         
+        {% block content %}{% endblock %}
+        
+        
+        {# JQuery #}
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/volksfest.js' %}"></script>
