@@ -1,0 +1,12 @@
+img.gallery {
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+img.gallery:hover {
+    opacity: 0.7;
+}
+
+.semi-transparent {
+    opacity: 0.8;
+}

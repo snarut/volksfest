@@ -30,4 +30,4 @@ class HomePage(Page):
     ]
 
     parent_page_types = []
-    subpage_types = ['product.ProductsListPage']
+    subpage_types = ['product.ProductsListPage', 'gallery.GalleryPage', 'aboutus.AboutusPage']
