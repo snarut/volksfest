@@ -5,15 +5,60 @@
 {% block body_class %}template-productpage{% endblock %}
 
 {% block extra_css %}
-
+<link rel="stylesheet" href="{% static 'css/product_page.css' %}">
 {% endblock extra_css %}
 
 {% block content %}
 
-<h1>{{ page.product_title }}</h1>
-<p>{{ page.product_description }}</p>
-{% image page.product_image width-800 as prodimg %}
-<img src="{{ prodimg.url }}" alt="{{ page.product_title }}">
+<section class="container">
+    <div class="px-lg-3 pt-3">
+        <div class="row">
+            <div class="col-12 col-lg-7 pe-lg-0 pt-4 text-center ">
+                <div class="row mx-4 mt-4">
+                    {% image page.product_image fill-800x800 as prodimg %}
+                    <div class="col-12 px-0 " >
+                        <img id="image-view-target" class="img-fluid" src="{{ prodimg.url }}" alt="{{ page.product_title }}">
+                    </div>
+                </div>
+                <div class="row mx-4 mt-2">
+                {% if page.more_product_image.all %}
+                    <div class="col-2 px-0 me-2 ">
+                        <a href="#">
+                            <img class="img-fluid active" src="{{ prodimg.url }}" alt="{{ page.product_title }}" large-img-url="{{ prodimg.url }}">
+                        </a>
+                    </div>
+                    {% for more_image_item in page.more_product_image.all %}
+                        {% image more_image_item.image fill-200x200 as moreimg %}
+                        {% image more_image_item.image fill-800x800 as largeimg %}
+                    <div class="col-2 px-0 me-2 ">
+                        <a href="#">
+                            <img class="img-fluid" src="{{ moreimg.url }}" alt="{{ page.product_title }}" large-img-url="{{ largeimg.url }}">
+                        </a>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                
+                </div>
 
+                {# How to display more product img #}
+            </div>
+            <div class="col-12 col-lg-5 pt-4 pt-lg-5 mt-lg-5 ">
+                <div class="p-3">
+                    <h3>{{ page.product_title }}</h3>
+                    <br>
+                    <h5>{{ page.product_description }}</h5>
+                </div>
+                <hr class="red">
+                <div class="px-3">
+                    <h4>ราคา {{ page.product_price }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock content %}
+
+{% block extra_js %}
+<script src="{% static 'js/product_page.js' %}"></script>
+{% endblock %}

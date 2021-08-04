@@ -51,4 +51,9 @@ a.card {
 hr.red {
     border: 1px solid #EB431B;
     background-color:transparent;
-  }
+}
+
+.draft {
+    border: 1px solid red;
+}
+

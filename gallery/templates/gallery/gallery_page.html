@@ -14,7 +14,7 @@
     <div class="col-10 col-md-4 col-xl-3 text-center">
         {% image item.image original as full_im %}
         {% image item.image fill-400x400 as im%}
-        <img class="gallery img-fluid shadow-sm border border-white border-5 rounded" src="{{ im.url }}" alt="{{ item.caption }}" data-target="#imagesCarousel" data-slide-to="{{ forloop.counter0 }}">
+        <img class="gallery img-fluid shadow-sm border border-white border-5 rounded" src="{{ im.url }}" alt="{{ item.caption }}" data-bs-target="#imagesCarousel" data-bs-slide-to="{{ forloop.counter0 }}">
         {% comment %} <a href="{{ full_im.url }}">
             
         </a> {% endcomment %}
@@ -32,7 +32,7 @@
             <div class="modal-body">
                 
                 <!-- Carousel markup goes here -->
-                <div id="imagesCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div id="imagesCarousel" class="carousel slide" >
                     <div class="carousel-inner">
                     {% for item in page.gallery_images.all %}
                         {% image item.image original as full_im %}

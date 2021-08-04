@@ -1,7 +1,8 @@
 from django.db import models
+from modelcluster.fields import ParentalKey
 
-from wagtail.core.models import Page
-from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.core.models import Orderable, Page
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
@@ -31,6 +32,7 @@ class ProductsListPage(Page):
 class ProductPage(Page):
     product_title = models.CharField(max_length=100, default='Product Name')
     product_description = models.CharField(max_length=500, default='')
+    product_price = models.CharField(max_length=100, default='')
     product_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -47,8 +49,10 @@ class ProductPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel("product_title"),
         FieldPanel("product_description"),
+        FieldPanel("product_price"),
         ImageChooserPanel("product_image"),
-        SnippetChooserPanel("product_category")
+        InlinePanel('more_product_image', label="More Image", min_num=0, max_num=4),
+        SnippetChooserPanel("product_category"),
     ]
 
     parent_page_types = ['product.ProductsListPage']
@@ -64,3 +68,15 @@ class Category(models.Model):
 
     def __str__(self):
         return self.text
+
+class MoreProductImage(Orderable):
+    page = ParentalKey(ProductPage, on_delete=models.CASCADE, related_name='more_product_image')
+    image = models.ForeignKey(
+        'wagtailimages.Image', 
+        on_delete=models.CASCADE,
+        related_name='+'
+    )
+
+    panels = [
+        ImageChooserPanel('image'),
+    ]
