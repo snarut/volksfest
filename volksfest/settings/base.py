@@ -91,13 +91,23 @@ WSGI_APPLICATION = 'volksfest.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'volksfest_db', # The Server name from 1.5
+        'USER': 'postgres', # The username from 1.6
+        'PASSWORD': '1234', # The password from installation
+        'HOST': 'localhost', # Host name/address from 1.6
+        'PORT': '5432' # Port from 1.6
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

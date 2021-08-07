@@ -58,6 +58,11 @@ class ProductPage(Page):
     parent_page_types = ['product.ProductsListPage']
     subpage_types = []
 
+    def __str__(self):
+        return self.product_title
+    
+    
+
 @register_snippet
 class Category(models.Model):
     text = models.CharField(max_length=50)
