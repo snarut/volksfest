@@ -9,7 +9,7 @@
 
 {% block content %}
 <h3 class="text-center mt-5 header-text">{{ page.gallery_text }}</h2>
-<div class="row my-5 px-4 gy-4 justify-content-center justify-content-md-start" data-bs-toggle="modal" data-bs-target="#imagesViewerModal">
+<div class="row my-5 px-4 gy-4" data-bs-toggle="modal" data-bs-target="#imagesViewerModal">
 {% for item in page.gallery_images.all %}
     <div class="col-10 col-md-4 col-xl-3 text-center">
         {% image item.image original as full_im %}

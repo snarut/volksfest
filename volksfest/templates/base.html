@@ -19,12 +19,7 @@
 
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/volksfest.css' %}">
-        {# Bootstrap 5 #}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-
-        {# Font Awesome #}
-        <link rel="stylesheet" href="{% static 'css/all.css' %}">
         {# Google Font #}
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,140 +37,35 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="/"><img style="width:100%" src="{% static 'VolksfestLogo.png' %}" ></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto fw-light text-center">
-                        {% with this_path=request.get_full_path|slugify %}
-                        <li class="nav-item navbar-menu-item mx-1">
-                            <a class="nav-link {% if this_path == '' %}active{% endif %}" aria-current="page" href="/">หน้าหลัก</a>
-                        </li>
-                        <li class="nav-item navbar-menu-item mx-1">
-                            <a class="nav-link {% if this_path == 'product' %}active{% endif %}" href="/product">สินค้าของเรา</a>
-                        </li>
-                        <li class="nav-item navbar-menu-item mx-1">
-                            <a class="nav-link {% if this_path == 'gallery' %}active{% endif %}" href="/gallery">รูปภาพ</a>
-                        </li>
-                        <li class="nav-item navbar-menu-item mx-1">
-                            <a class="nav-link {% if this_path == 'about' %}active{% endif %}" href="/about">เกี่ยวกับเรา</a>
-                        </li>
-                        <li class="nav-item navbar-menu-item mx-1">
-                            <a class="nav-link" href="https://line.me/R/ti/p/@volksfestsausage" >สั่งเลย!</a>
-                        </li>
-                        {% endwith %}
-                    </ul>
+                <ul class="navbar-nav ms-auto fw-light ">
+                    {% with this_path=request.get_full_path|slugify %}
+                    <li class="nav-item navbar-menu-item mx-1">
+                    <a class="nav-link {% if this_path == '' %}active{% endif %}" aria-current="page" href="/">หน้าหลัก</a>
+                    </li>
+                    <li class="nav-item navbar-menu-item mx-1">
+                    <a class="nav-link {% if this_path == 'product' %}active{% endif %}" href="/product">สินค้าของเรา</a>
+                    </li>
+                    <li class="nav-item navbar-menu-item mx-1">
+                    <a class="nav-link {% if this_path == 'gallery' %}active{% endif %}" href="/gallery">รูปภาพ</a>
+                    </li>
+                    <li class="nav-item navbar-menu-item mx-1">
+                    <a class="nav-link {% if this_path == 'about' %}active{% endif %}" href="/about">เกี่ยวกับเรา</a>
+                    </li>
+                    <li class="nav-item navbar-menu-item mx-1">
+                    <a class="nav-link" href="https://line.me/R/ti/p/@volksfestsausage" >สั่งเลย!</a>
+                    </li>
+                    {% endwith %}
+                </ul>
                 </div>
             </div>
         </nav>
         
-        <main>
         {% block content %}{% endblock %}
-        </main>
         
-        <!-- Footer -->
-        <footer class="text-center text-lg-start bg-light text-muted p-1">
-            <!-- Section: Links  -->
-            <section class="pb-2">
-                <div class="container text-center text-md-start mt-3">
-                <!-- Grid row -->
-                <div class="row mt-3">
-                    <!-- Grid column -->
-                    <div class="col-12 col-md-4 mx-auto mb-4">
-                        <!-- Content -->
-                        <h6 class="text-uppercase fw-bold mb-2">
-                            Volksfest Sausage
-                        </h6>
-                        <div class="row">
-                            <div class="col-12">
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-12 col-md-4 mx-auto mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-2">
-                        ผังเว็บไซต์
-                    </h6>
-                    <div class="row">
-                        <div class="col-1">
-                        </div>
-                        <div class="col-11">
-                            <a href="/" class="text-muted">หน้าแรก</a>
-                        </div>
-                        <div class="col-1">
-                        </div>
-                        <div class="col-11">
-                            <a href="/product" class="text-muted">สินค้าของเรา</a>
-                        </div>
-                        <div class="col-1">
-                        </div>
-                        <div class="col-11">
-                            <a href="/gallery" class="text-muted">รูปภาพ</a>
-                        </div>
-                        <div class="col-1">
-                        </div>
-                        <div class="col-11">
-                            <a href="/about" class="text-muted">เกี่ยวกับเรา</a>
-                        </div>
-                    </div>
-                    
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-12 col-md-4 mx-auto mb-md-0 mb-4">
-                    <!-- Links -->
-                        <div class="">
-                            <h6 class="text-uppercase fw-bold mb-2 d-inline-block">
-                                ติดต่อเรา 
-                            </h6>
-                            <div class="d-inline-block">
-                                <i class="fab fa-facebook-square fa-lg"></i> <i class="fab fa-line fa-lg"></i>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-1">
-                                <i class="fas fa-home me-3"></i>     
-                            </div>
-                            <div class="col-11">
-                                36 343 ถ. โชคชัย 4 แขวงลาดพร้าว เขตลาดพร้าว กรุงเทพมหานคร 10230
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-1">
-                                <i class="fas fa-envelope me-3"></i>     
-                            </div>
-                            <div class="col-11">
-                                volksfestsausage@gmail.com
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-1">
-                                <i class="fas fa-phone me-3"></i>     
-                            </div>
-                            <div class="col-11">
-                                087 815 1335
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Grid column -->
-                </div>
-                <!-- Grid row -->
-                </div>
-            </section>
-            <!-- Section: Links  -->
-
-            <!-- Copyright -->
-            <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0.05);">
-                © 2021 Copyright:
-                <a class="text-reset fw-bold" href="#">Volksfest Sausage</a>
-            </div>
-            <!-- Copyright -->
-        </footer>
-        <!-- Footer -->
+        {# TODO: add footer #}
         
         {# JQuery #}
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -183,11 +73,8 @@
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/volksfest.js' %}"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
-
-        
     </body>
 </html>
