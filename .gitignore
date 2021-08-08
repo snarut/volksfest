@@ -11,16 +11,8 @@ pip-delete-this-directory.txt
 # Environments
 .env
 .venv
-.venv/
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
-
-*.pyc
-.DS_Store
-*.swp
-/venv/
-/static/
-/media/

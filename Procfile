@@ -1,1 +1,0 @@
-web: gunicorn volksfest.wsgi --log-file -
