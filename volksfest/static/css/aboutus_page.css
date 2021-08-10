@@ -4,3 +4,19 @@
     padding-top: 50px;
 }
 
+.review-text {
+    padding: 0px 100px 0px 100px;
+}
+
+@media screen and (max-width: 992px) {
+    .richtext {
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 50px;
+    }
+    .review-text {
+        padding: 0px 0px 0px 0px;
+    }
+}
+
+

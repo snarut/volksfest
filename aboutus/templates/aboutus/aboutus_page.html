@@ -30,7 +30,7 @@
 
 <section class="container py-4 my-lg-3 py-sm-5">
     <hr class="red">
-    <div class="row mt-sm-3 g-5">
+    <div class="row mt-sm-3 g-5 justify-content-center">
         <div class="col-md-4 col-10">
             {% image page.first_image fill-500x500 as first_im %}
             <img class="img-fluid" src="{{ first_im.url }}" alt="First Image">
@@ -46,7 +46,7 @@
     </div>
 </section>
 
-<section class="container py-4 my-lg-3 py-sm-5">
+<section class="container py-4 my-1 my-lg-3 py-sm-5">
     <div class="row">
         <div class="col-12 text-center">
             <h3 class="header-text">รีวิวจากลูกค้าของเรา</h3>
@@ -54,11 +54,11 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <div id="reviewCarousel" class="carousel carousel-dark slide my-5" data-bs-ride="carousel" style="">
+            <div id="reviewCarousel" class="carousel carousel-dark slide my-1 my-lg-5" data-bs-ride="carousel" style="">
                 <div class="carousel-inner">
                     {% for cus_review in page.reviews.all %}
                     <div class="carousel-item text-center {% if forloop.counter0 == 0 %}active{% endif %}" style="min-height:200px;">
-                        <div class="carousel-caption d-block" style="padding: 0px 100px 0px 100px;">
+                        <div class="carousel-caption d-block review-text">
                             <p>{{ cus_review.review.review_text|richtext }}</p>
                             <h6 class="fw-bold">- {{ cus_review.review.review_by }} -</h5>
                         </div>
