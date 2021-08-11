@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-promotionslistpage{% endblock %}
+
+{% block extra_css %}
+
+{% endblock extra_css %}
+
+{% block content %}
+
+
+{% image page.hero_image width-1400 as heroimg%}
+<div class="w-100" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('{{ heroimg.url}}'), no-repeat center center; background-size:cover; height:500px">
+    <div class="d-flex w-100 h-100 p-3 mx-auto">
+        <div class="text-center position-relative w-100 h-100">
+            <div class="position-absolute top-50 start-50 translate-middle">
+                <h1 class="text-light">{{ page.hero_text }}</h1>
+                <p class="text-light mt-6">{{ page.hero_subtext }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="container py-4 my-lg-3 py-sm-5">
+    <div class="row gy-4 mt-sm-3">
+    {% for promotion_page in self.get_children %}
+        {% with promotion_page=promotion_page.specific %}
+        <div class="col-md-6 col-sm-12 mb-grid-gutter ">
+            <div class="card shadow" style="width: 35rem; min-height: 35rem;">
+                {% image promotion_page.promotion_image fill-400x250 as promimg %}
+                <img src="{{ promimg.url }}" class="card-img-top" alt="{{ promotion_page.promotion_header }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ promotion_page.promotion_header }}</h5>
+                    <div class="card-text">
+                        {{ promotion_page.promotion_short_text }}
+                    </div>
+                    <br>
+                    <br>
+                    <div class="text-end">
+                        <a href="{% pageurl promotion_page %}" class="btn btn-primary">ดูเพิ่ม</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        {% endwith %}
+    {% endfor %}
+    </div>
+</section>
+
+
+{% endblock content %}

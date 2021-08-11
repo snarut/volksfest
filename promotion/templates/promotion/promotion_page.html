@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-promotionpage{% endblock %}
+
+{% block extra_css %}
+{% comment %} borrow css and js from product page {% endcomment %}
+<link rel="stylesheet" href="{% static 'css/product_page.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+<section class="container mb-5">
+    <div class="px-lg-3 pt-3">
+        <div class="row">
+            <div class="col-12 col-lg-7 pe-lg-0 pt-4 text-center ">
+                <div class="row mx-4 mt-4">
+                    {% image page.promotion_image fill-800x800 as promimg %}
+                    <div class="col-12 px-0 " >
+                        <img id="image-view-target" class="img-fluid" src="{{ promimg.url }}" alt="{{ page.promotion_header }}">
+                    </div>
+                </div>
+                <div class="row mx-4 mt-2">
+                {% if page.more_promotion_image.all %}
+                    <div class="col-2 px-0 me-2 ">
+                        <a href="#">
+                            <img class="img-fluid active" src="{{ promimg.url }}" alt="{{ page.promotion_header }}" large-img-url="{{ promimg.url }}">
+                        </a>
+                    </div>
+                    {% for more_image_item in page.more_promotion_image.all %}
+                        {% image more_image_item.image fill-200x200 as moreimg %}
+                        {% image more_image_item.image fill-800x800 as largeimg %}
+                    <div class="col-2 px-0 me-2 ">
+                        <a href="#">
+                            <img class="img-fluid" src="{{ moreimg.url }}" alt="{{ page.product_title }}" large-img-url="{{ largeimg.url }}">
+                        </a>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                
+                </div>
+
+            </div>
+            <div class="col-12 col-lg-5 pt-4 pt-lg-5 mt-lg-5 ">
+                <div class="p-3">
+                    <h3>{{ page.promotion_header }}</h3>
+                    <br>
+                    {{ page.promotion_text|richtext }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block extra_js %}
+{% comment %} borrow css and js from product page {% endcomment %}
+<script src="{% static 'js/product_page.js' %}"></script>
+{% endblock %}

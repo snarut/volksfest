@@ -46,7 +46,7 @@
                 <ul class="navbar-nav ms-auto fw-light text-center">
                     {% with this_path=request.get_full_path|slugify %}
                     <li class="nav-item navbar-menu-item mx-1">
-                    <a class="nav-link {% if this_path == '' %}active{% endif %}" aria-current="page" href="/">หน้าหลัก</a>
+                    <a class="nav-link {% if this_path == 'promotion' %}active{% endif %}" aria-current="page" href="/promotion">โปรโมชั่น</a>
                     </li>
                     <li class="nav-item navbar-menu-item mx-1">
                     <a class="nav-link {% if this_path == 'product' %}active{% endif %}" href="/product">สินค้าของเรา</a>
@@ -101,6 +101,12 @@
                         </div>
                         <div class="col-11">
                             <a href="/" class="text-muted">หน้าแรก</a>
+                        </div>
+                        <div class="col-1">
+                            <i class="fas fa-angle-right me-3"></i>  
+                        </div>
+                        <div class="col-11">
+                            <a href="/promotion" class="text-muted">โปรโมชั่น</a>
                         </div>
                         <div class="col-1">
                             <i class="fas fa-angle-right me-3"></i>  
