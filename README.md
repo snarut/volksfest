@@ -5,4 +5,14 @@ After finished full-stack web development course, I'd like to put my newly learn
 
 Here's the end result
 
-![Screenshot]()
+![Screenshot](/VolksfestScreenshot.png)
+
+## Dependencies
+* Python3
+* Wagtail
+
+## To Do(s)
+* Fix YouTube thumbnail not display in Home page
+
+## Thanks
+Thanks [Kalob Taulien](https://github.com/KalobTaulien) for amazing full-stack web development course to make this even possible.
